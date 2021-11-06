@@ -1,0 +1,57 @@
+
+.client-card {
+    padding: 16px;
+}
+
+.client-card > header > .options-button {
+    flex: 0;
+}
+
+.client-card > header {
+    display: flex;
+    align-items: center;
+}
+
+.client-card > .content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;
+}
+
+.client-card > .content > .detail:first-child {
+    margin-top: 6px;
+}
+
+.client-card > .content > .detail {
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.client-card > .content > .detail > .prefix:after {
+    content: " — ";
+    white-space: pre;
+}
+
+.client-card > header > .number {
+    all: unset;
+    font-size: 21px;
+    flex: 1;
+}
+
+.client-card > .content > .detail > .prefix {
+    all: unset;
+}
+
+.client-card > .content > .detail > .info {
+    all: unset;
+    font-weight: bold;
+}
+
+@media (min-width: 683px) {
+    .client-card {
+        display: inline-block;
+    }
+}
