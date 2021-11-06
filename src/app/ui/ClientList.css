@@ -1,0 +1,10 @@
+
+.client-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.client-list > .client-card {
+    margin: 12px;
+}
