@@ -1,0 +1,16 @@
+
+.search-bar {
+    display: inline-flex;
+    flex-direction: row;
+    padding: 12px;
+}
+
+.search-bar > .field {
+    margin-left: 24px;
+    width: 120px;
+}
+
+.search-bar > .field:first-child {
+    margin-left: 0;
+    width: 340px;
+}
