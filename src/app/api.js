@@ -28,4 +28,8 @@ async function getApartments(houseId) {
         .map((it) => ({id: it.id, name: it.name}))
 }
 
-export { getStreets, getHouses, getApartments }
+async function getClients(addressId) {
+    return await (await request("/HousingStock/clients?addressId=" + addressId)).json() || []
+}
+
+export { getStreets, getHouses, getApartments, getClients }

@@ -6,7 +6,7 @@ import "./ClientCard.css"
 
 function ClientCard(params) {
     const {client, onEdit, onDelete} = params
-    const {number, name, email} = client
+    const {phone, name, email} = client
 
     const [anchorEl, setAnchorEl] = React.useState(null)
     const open = Boolean(anchorEl)
@@ -28,7 +28,7 @@ function ClientCard(params) {
     return (
         <Card className="client-card" component="section">
             <header>
-                <h1 className="number">{number}</h1>
+                <h1 className="number">{phone}</h1>
                 <IconButton className="options-button" onClick={(it) => setAnchorEl(it.currentTarget)}>
                     <MoreVertOutlined />
                 </IconButton>
