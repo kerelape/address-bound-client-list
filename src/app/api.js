@@ -29,7 +29,11 @@ async function getApartments(houseId) {
 }
 
 async function getClients(addressId) {
-    return await (await request("/HousingStock/clients?addressId=" + addressId)).json() || []
+    try {
+        return await (await request("/HousingStock/clients?addressId=" + addressId)).json()
+    } catch (e) {
+        return []
+    }
 }
 
 export { getStreets, getHouses, getApartments, getClients }
