@@ -2,6 +2,7 @@ import {Autocomplete, Paper, TextField} from "@mui/material"
 import React from "react"
 
 import "./SearchBar.css"
+import {getApartments, getHouses} from "../api"
 
 function SearchBar(params) {
     const {onChoseApartment, streets} = params
@@ -16,7 +17,7 @@ function SearchBar(params) {
     // Update houses
     React.useEffect(() => {
         if (chosenStreet) {
-            setHouses(["a", "a.2", "b"])
+            getHouses(chosenStreet.id).then(setHouses)
         } else {
             setHouses(null)
             chooseHouse(null)
@@ -26,7 +27,7 @@ function SearchBar(params) {
     // Update apartments
     React.useEffect(() => {
         if (chosenHouse) {
-            setApartments(["1", "2", "3", "4"])
+            getApartments(chosenHouse.id).then(setApartments)
         } else {
             setApartments(null)
             chooseApartment(null)
@@ -34,8 +35,16 @@ function SearchBar(params) {
     }, [chosenHouse])
 
     React.useEffect(() => {
-        onChoseApartment(0)
+        onChoseApartment(chosenApartment || null)
     }, [chosenApartment])
+
+    React.useEffect(() => {
+        setApartments(null)
+    }, [chosenHouse])
+
+    React.useEffect(() => {
+        setHouses(null)
+    }, [chosenStreet])
 
     return (
         <Paper className="search-bar">
@@ -43,6 +52,7 @@ function SearchBar(params) {
                 className="field"
                 disablePortal
                 value={chosenStreet}
+                getOptionLabel={(option) => option.name}
                 onChange={(_, value) => chooseStreet(value)}
                 loading={!streets}
                 renderInput={(params) => <TextField {...params} label="Street" />}
@@ -51,6 +61,7 @@ function SearchBar(params) {
                 disablePortal
                 className="field"
                 value={chosenHouse}
+                getOptionLabel={(option) => option.name}
                 onChange={(_, value) => chooseHouse(value)}
                 loading={!houses}
                 loadingText="Choose street..."
@@ -60,6 +71,7 @@ function SearchBar(params) {
                 disablePortal
                 className="field"
                 value={chosenApartment}
+                getOptionLabel={(option) => option.name}
                 onChange={(_, value) => chooseApartment(value)}
                 loading={!apartments}
                 loadingText="Choose house..."
