@@ -43,4 +43,15 @@ async function postClient(client) {
     })
 }
 
-export { getStreets, getHouses, getApartments, getClients, postClient }
+async function bindClient(addressId, clientId) {
+    await request("/HousingStock/bind_client", {
+        method: "PUT",
+        body: JSON.stringify({addressId, clientId})
+    })
+}
+
+async function unbindClient(clientId) {
+    await request("/HousingStock/bind_client/" + clientId, {method: "DELETE"})
+}
+
+export { getStreets, getHouses, getApartments, getClients, postClient, bindClient, unbindClient }
