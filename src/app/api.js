@@ -36,4 +36,11 @@ async function getClients(addressId) {
     }
 }
 
-export { getStreets, getHouses, getApartments, getClients }
+async function postClient(client) {
+    await request("/HousingStock/client", {
+        method: "POST",
+        body: JSON.stringify(client)
+    })
+}
+
+export { getStreets, getHouses, getApartments, getClients, postClient }
