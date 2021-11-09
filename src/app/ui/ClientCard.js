@@ -1,6 +1,7 @@
 import {MenuRounded, MoreVertOutlined} from "@material-ui/icons"
 import React from "react"
 import {Card, IconButton, Menu, MenuItem} from "@material-ui/core"
+import PropTypes from "prop-types"
 
 import "./ClientCard.css"
 
@@ -48,6 +49,12 @@ function ClientCard({client, onEdit, onDelete}) {
             </div>
         </Card>
     )
+}
+
+ClientCard.propTypes = {
+    client: PropTypes.object,
+    onEdit: PropTypes.func,
+    onDelete: PropTypes.func
 }
 
 export default ClientCard
