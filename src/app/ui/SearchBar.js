@@ -1,5 +1,6 @@
 import {Autocomplete, Paper, TextField} from "@mui/material"
 import React from "react"
+import PropTypes from "prop-types"
 
 import "./SearchBar.css"
 import {getApartments, getHouses} from "../api"
@@ -78,6 +79,11 @@ function SearchBar({onChoseApartment, streets}) {
                 options={apartments || []} />
         </Paper>
     )
+}
+
+SearchBar.propTypes = {
+    onChoseApartment: PropTypes.func,
+    streets: PropTypes.array
 }
 
 export default SearchBar
