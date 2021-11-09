@@ -4,8 +4,7 @@ import React from "react"
 import "./SearchBar.css"
 import {getApartments, getHouses} from "../api"
 
-function SearchBar(params) {
-    const {onChoseApartment, streets} = params
+function SearchBar({onChoseApartment, streets}) {
 
     const [houses, setHouses] = React.useState(null)
     const [apartments, setApartments] = React.useState(null)
