@@ -4,8 +4,7 @@ import {Card, IconButton, Menu, MenuItem} from "@material-ui/core"
 
 import "./ClientCard.css"
 
-function ClientCard(params) {
-    const {client, onEdit, onDelete} = params
+function ClientCard({client, onEdit, onDelete}) {
     const {phone, name, email} = client
 
     const [anchorEl, setAnchorEl] = React.useState(null)
